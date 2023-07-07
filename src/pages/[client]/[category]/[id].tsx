@@ -54,7 +54,7 @@ const SharePage = ({
         },
         {
           property: openGraph.type,
-          content: `website`,
+          content: query.get("type") ?? `website`,
         },
         {
           property: openGraph.url,
