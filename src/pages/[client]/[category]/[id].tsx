@@ -46,15 +46,17 @@ const SharePage = ({
       meta={[
         {
           property: openGraph.title,
-          content: `${serverData?.title ?? messages.titleNotFound}`,
+          content:
+            (query.get("operation") ? query.get("operation") + " - " : "") +
+              serverData?.title ?? messages.titleNotFound,
         },
         {
           property: openGraph.image,
-          content: `${serverData?.image ?? messages.imageNotFound}`,
+          content: serverData?.image ?? messages.imageNotFound,
         },
         {
           property: openGraph.description,
-          content: `${serverData?.headline ?? messages.headlineNotFound}`,
+          content: serverData?.headline ?? messages.headlineNotFound,
         },
         {
           property: openGraph.type,
@@ -77,11 +79,10 @@ export async function getServerData({ query, params }: GetServerDataProps) {
   const res = await fetch(
     `${mediaCore.schema}${query?.env ? query?.env + "." : ""}${
       mediaCore.domain
-    }/api/core/compartir/?client=${params?.client}&category=${
+    }api/core/compartir/?client=${params?.client}&category=${
       params?.category
     }&id=${params?.id}`
   );
-  console.log(res);
   if (!res.ok) {
     return {
       props: {},
