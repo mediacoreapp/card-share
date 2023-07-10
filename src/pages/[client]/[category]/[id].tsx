@@ -37,9 +37,12 @@ const SharePage = ({
   serverData,
 }: PageProps & ReturnProps) => {
   const query = new URLSearchParams(search);
-
   useEffect(() => {
-    if (query.get("url")) navigate(query.get("url") ?? "");
+    if (query.get("url")) {
+      navigate(
+        "//" + query.get("url")!.replace("https://", "").replace("http://", "")
+      );
+    }
   }, []);
 
   return (
