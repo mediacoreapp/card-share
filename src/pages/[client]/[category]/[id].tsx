@@ -81,6 +81,7 @@ export async function getServerData({ query, params }: GetServerDataProps) {
       params?.category
     }&id=${params?.id}`
   );
+  console.log(res);
   if (!res.ok) {
     return {
       props: {},
