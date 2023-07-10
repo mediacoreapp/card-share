@@ -1,5 +1,5 @@
-import React from "react";
-import type { GetServerDataProps, PageProps } from "gatsby";
+import React, { useEffect } from "react";
+import { GetServerDataProps, PageProps, navigate } from "gatsby";
 import { Helmet } from "react-helmet";
 
 const mediaCore = {
@@ -37,6 +37,10 @@ const SharePage = ({
 }: PageProps & ReturnProps) => {
   const query = new URLSearchParams(search);
 
+  useEffect(() => {
+    if (query.get("url")) navigate(query.get("url") ?? "");
+  }, []);
+
   return (
     <Helmet
       meta={[
@@ -58,7 +62,7 @@ const SharePage = ({
         },
         {
           property: openGraph.url,
-          content: query.get("target") ?? "",
+          content: query.get("url") ?? "",
         },
       ]}
     />
@@ -70,15 +74,12 @@ export default SharePage;
 export async function getServerData({ query, params }: GetServerDataProps) {
   if (!validCategories.includes(params?.category as string))
     return { props: {} };
-  const fetchElement = {
-    novedades: `${mediaCore.schema}${query?.env ? query?.env + "." : ""}${
-      mediaCore.domain
-    }/api/blog/novedades/${params?.id}/get_data_detail/?client=${
-      params?.client
-    }`,
-  };
   const res = await fetch(
-    fetchElement[params?.category as keyof typeof fetchElement]
+    `${mediaCore.schema}${query?.env ? query?.env + "." : ""}${
+      mediaCore.domain
+    }/api/core/compartir/?client=${params?.client}&category=${
+      params?.category
+    }&id=${params?.id}`
   );
   if (!res.ok) {
     return {
