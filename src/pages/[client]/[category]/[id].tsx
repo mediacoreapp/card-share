@@ -22,6 +22,7 @@ const openGraph = {
 };
 
 const validCategories = ["novedades", "propiedades", "emprendimientos"];
+const validEnvs = ["dev", "staging"];
 
 interface ReturnProps {
   serverData?: {
@@ -74,7 +75,10 @@ const SharePage = ({
 export default SharePage;
 
 export async function getServerData({ query, params }: GetServerDataProps) {
-  if (!validCategories.includes(params?.category as string))
+  if (
+    !validCategories.includes(params?.category as string) ||
+    !validEnvs.includes(query?.env as string)
+  )
     return { props: {} };
   const res = await fetch(
     `${mediaCore.schema}${query?.env ? query?.env + "." : ""}${
