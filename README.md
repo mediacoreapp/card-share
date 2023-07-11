@@ -1,49 +1,34 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+    <img alt="Unixono" src="https://unixono.com/wp-content/uploads/2018/08/logo.png" width="160" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby Minimal TypeScript Starter
+  MediaCore Card Link Share and Redirector
 </h1>
 
 ## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
+1.  **Deploy to a NodeJS server.**
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+    This app uses SSR features that require running NodeJS server, which are currently fully supported with `gatsby serve` or in [Gatsby Cloud](https://https://www.gatsbyjs.com/products/cloud/).
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
+    MediaCore backend should accept CORS requests from the domain where the app is deployed.
+
+2.  **Start link sharing!**
+
+    Once your app is deployed (i.e. to https://myexampledomain.com), you can share a link according to the following structure: 
+
     ```
-
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
+    https://myexampledomain.com/[client]/[category]/[id]/?queryparam1=value1&queryparam2=value2...
     ```
+    | Param         | Type                                                   |  Description      |
+    | ------------- |:-------------:                                         |  -----------:     |
+    | `client`      | `number`                                               | Client Id         |       
+    | `category`    | `'novedades'` \| `'emprendimientos'` \| `'propiedades'`| Element category  |
+    | `id`          | `number`                                               | Element Id        |
 
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.tsx` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-## 🚀 Quick start (Netlify)
-
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+    | Query Param     | Type           |Default|  Description      |
+    | -------------   |:-------------:|  -----------:     |  -----------:     |
+    | `url` | `string` | `undefined` | The url where the user will be redirected when clicking on the shared link |
+    | `env` (optional)|`'dev'` \| `'staging'`| `undefined`| An optional param to query a development environment backend instead of prod |
+    | `operation` (optional) | `string` | `''` | An optional param which will be contatenated to the card `og:title` followed by a hyphen ('Example operation - Card title')|
