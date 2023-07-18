@@ -79,7 +79,7 @@ export default SharePage;
 export async function getServerData({ query, params }: GetServerDataProps) {
   if (
     !validCategories.includes(params?.category as string) ||
-    !validEnvs.includes(query?.env as string)
+    (query?.env && !validEnvs.includes(query?.env as string))
   )
     return { props: {} };
   const res = await fetch(
