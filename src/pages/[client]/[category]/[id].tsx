@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { GetServerDataProps, PageProps, navigate } from "gatsby";
+import { GetServerDataProps, PageProps } from "gatsby";
 import { Helmet } from "react-helmet";
-import { type } from "os";
 
 const mediaCore = {
   schema: "https://",
@@ -22,7 +21,13 @@ const openGraph = {
   url: "og:url",
 };
 
-const validCategories = ["novedades", "propiedades", "emprendimientos"];
+const validCategories = [
+  "novedades",
+  "propiedades",
+  "emprendimientos",
+  "propiedades_mediasite",
+  "emprendimientos_mediasite",
+];
 const validEnvs = ["dev", "staging"];
 
 interface ReturnProps {

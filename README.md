@@ -24,7 +24,7 @@
     | Param         | Type                                                   |  Description      |
     | ------------- |:-------------:                                         |  -----------:     |
     | `client`      | `number`                                               | Client Id         |       
-    | `category`    | `'novedades'` \| `'emprendimientos'` \| `'propiedades'`| Element category  |
+    | `category`    | `'novedades'` \| `'emprendimientos'` \| `'propiedades'` \| `'emprendimientos_mediasite'` \| `'propiedades_mediasite'`| Element category  |
     | `id`          | `number`                                               | Element Id        |
 
     | Query Param     | Type           |Default|  Description      |
