@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { GetServerDataProps, PageProps } from "gatsby";
 import { Helmet } from "react-helmet";
 
-const mediaCore = {
+const backend = {
   schema: "https://",
-  domain: "mediacore.app/",
+  domain: process.env.GATSBY_DOMAIN ?? "",
 };
 
 const messages = {
@@ -88,8 +88,8 @@ export async function getServerData({ query, params }: GetServerDataProps) {
   )
     return { props: {} };
   const res = await fetch(
-    `${mediaCore.schema}${query?.env ? query?.env + "." : ""}${
-      mediaCore.domain
+    `${backend.schema}${query?.env ? query?.env + "." : ""}${
+      backend.domain
     }api/core/compartir/?client=${params?.client}&category=${
       params?.category
     }&id=${params?.id}`

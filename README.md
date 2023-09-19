@@ -3,7 +3,7 @@
   </a>
 </p>
 <h1 align="center">
-  MediaCore Card Link Share and Redirector
+  Card Link Share and Redirector
 </h1>
 
 ## 🚀 Quick start
@@ -12,7 +12,7 @@
 
     This app uses SSR features that require running NodeJS server, which are currently fully supported with `gatsby serve` or in [Gatsby Cloud](https://https://www.gatsbyjs.com/products/cloud/).
 
-    MediaCore backend should accept CORS requests from the domain where the app is deployed.
+    Backend should accept CORS requests from the domain where the app is deployed.
 
 2.  **Start link sharing!**
 

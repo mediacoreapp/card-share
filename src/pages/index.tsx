@@ -7,4 +7,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>MediaCore Share</title>;
+export const Head: HeadFC = () => <title>Card Share</title>;
