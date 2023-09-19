@@ -90,7 +90,7 @@ export async function getServerData({ query, params }: GetServerDataProps) {
   const res = await fetch(
     `${backend.schema}${query?.env ? query?.env + "." : ""}${
       backend.domain
-    }api/core/compartir/?client=${params?.client}&category=${
+    }/api/core/compartir/?client=${params?.client}&category=${
       params?.category
     }&id=${params?.id}`
   );
